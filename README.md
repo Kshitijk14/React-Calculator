@@ -1,4 +1,7 @@
-# react-projects-personal
+# Calculator
+
+![image](https://github.com/Kshitijk14/react-projects-personal/assets/98537053/2cad86f6-4f16-4311-a54a-b5ed396a7c18)
+
 
 # React + TypeScript + Vite
 
