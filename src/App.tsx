@@ -1,30 +1,29 @@
-import { Wrapper, Screen, Button, ButtonBox } from './components'
-import CalcProvider from "./context/CalcContext";
-
-const btnValues = [
-  ["C", "+-", "%", "/"],
-  [7, 8, 9, "x"],
-  [4, 5, 6, "-"],
-  [1, 2, 3, "+"],
-  [0, ".", "="],
-];
+import { useState } from 'react';
+import { Navbar, Message, ListGroup, Alert, Button, DisAlert, Calculator } from './components';
 
 function App() {
+
+  const [alertVisible, setAlertVisibility] = useState(false);
+
+  let items = [ "New York", "San Fransisco", "Tokyo", "London" ]
+
+  const handleSelectItem = (item:string) => {
+    console.log(item);
+  }
+
   return (
-    <CalcProvider>
-      <Wrapper>
-        <Screen />
-        <ButtonBox>
-          {btnValues.flat().map((btn, i) => (
-            <Button
-              value={btn}
-              key={i}
-            />
-          ))}
-        </ButtonBox>
-      </Wrapper>
-    </CalcProvider>
-  );
+    <> 
+      <Navbar />
+      <Message />
+      <ListGroup items={items} heading="Cities" onSelectItem={handleSelectItem} />
+      {alertVisible && <Alert onClose={ () => setAlertVisibility(false) }>
+        Hello <span>World</span>!!
+      </Alert>}
+      <Button onClick={() => setAlertVisibility(true)}> Sign Up </Button>
+      {/* <DisAlert /> */}
+      <Calculator />
+    </>
+  )
 }
 
-export default App;
+export default App
